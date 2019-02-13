@@ -1,0 +1,54 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x501d3c7e, pid=24584, tid=556
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_45-b14) (build 1.8.0_45-b14)
+# Java VM: Java HotSpot(TM) Client VM (25.45-b02 mixed mode windows-x86 )
+# Problematic frame:
+# C  [WinSockHook.dll+0x13c7e]
+#
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x1d743000):  JavaThread "AsyncReporter{org.springframework.cloud.sleuth.zipkin2.sender.RestTemplateSender@16150f4}" daemon [_thread_in_native, id=556, stack(0x1e110000,0x1e160000)]
+
+siginfo: ExceptionCode=0xc0000005, reading address 0x00000000
+
+Registers:
+EAX=0x0000274d, EBX=0x00000000, ECX=0x00000000, EDX=0x00000000
+ESP=0x1e15ec30, EBP=0x1e15f0cc, ESI=0x00000000, EDI=0x0000274d
+EIP=0x501d3c7e, EFLAGS=0x00010206
+
+Top of Stack: (sp=0x1e15ec30)
+0x1e15ec30:   c88a14ab 1d743000 1d743140 1e232c78
+0x1e15ec40:   1e15ed50 779028a8 1e15ed84 778ccf6b
+0x1e15ec50:   00000001 0000000c 779edd9c 00000015
+0x1e15ec60:   00000026 00000001 1e15ed8c 00000000
+0x1e15ec70:   a3d18e44 00000168 779ee26d 77902547
+0x1e15ec80:   0000004c 00000000 00000003 00000014
+0x1e15ec90:   0815d800 1e15edb8 1e15ed40 05c7aa9c
+0x1e15eca0:   1e28db20 0000274d 1e15f0e8 ffffffff 
+
+Instructions: (pc=0x501d3c7e)
+0x501d3c5e:   45 fc ff ff ff ff 8d 8d e4 fb ff ff e8 e1 b7 ff
+0x501d3c6e:   ff 8b c7 e9 3a 04 00 00 8b 0d dc 1c 25 50 8b f1
+0x501d3c7e:   8b 11 8b 42 24 ff d0 84 c0 75 11 8b 16 8b ce 8b
+0x501d3c8e:   42 28 ff d0 84 c0 0f 84 fe 03 00 00 68 1c 6a 23 
+
+
+Register to memory mapping:
+
+EAX=
+[error occurred during error reporting (printing register info), id 0xc0000005]
+
+Stack: [0x1e110000,0x1e160000],  sp=0x1e15ec30,  free space=315k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C

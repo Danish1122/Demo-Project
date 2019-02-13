@@ -1,0 +1,94 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x501d3c7e, pid=21152, tid=14768
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_45-b14) (build 1.8.0_45-b14)
+# Java VM: Java HotSpot(TM) Client VM (25.45-b02 mixed mode windows-x86 )
+# Problematic frame:
+# C  [WinSockHook.dll+0x13c7e]
+#
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x1d360400):  JavaThread "AsyncReporter{org.springframework.cloud.sleuth.zipkin2.sender.RestTemplateSender@a236e}" daemon [_thread_in_native, id=14768, stack(0x1dd00000,0x1dd50000)]
+
+siginfo: ExceptionCode=0xc0000005, reading address 0x00000000
+
+Registers:
+EAX=0x0000274d, EBX=0x00000000, ECX=0x00000000, EDX=0x00000000
+ESP=0x1dd4efe0, EBP=0x1dd4f47c, ESI=0x00000000, EDI=0x0000274d
+EIP=0x501d3c7e, EFLAGS=0x00010206
+
+Top of Stack: (sp=0x1dd4efe0)
+0x1dd4efe0:   c247c619 1d360400 1d360540 1de23058
+0x1dd4eff0:   1dd4f100 779028a8 1dd4f134 778ccf6b
+0x1dd4f000:   00000001 0000000c 779edd9c 00000015
+0x1dd4f010:   00000026 00000001 1dd4f13c 00000000
+0x1dd4f020:   a39a30d1 00000168 779ee26d 77902547
+0x1dd4f030:   0000004c 00000000 00000003 00000014
+0x1dd4f040:   0777e8f0 1dd4f168 1dd4f0f0 0565cc9c
+0x1dd4f050:   1de6e120 0000274d 1dd4f498 ffffffff 
+
+Instructions: (pc=0x501d3c7e)
+0x501d3c5e:   45 fc ff ff ff ff 8d 8d e4 fb ff ff e8 e1 b7 ff
+0x501d3c6e:   ff 8b c7 e9 3a 04 00 00 8b 0d dc 1c 25 50 8b f1
+0x501d3c7e:   8b 11 8b 42 24 ff d0 84 c0 75 11 8b 16 8b ce 8b
+0x501d3c8e:   42 28 ff d0 84 c0 0f 84 fe 03 00 00 68 1c 6a 23 
+
+
+Register to memory mapping:
+
+EAX=
+[error occurred during error reporting (printing register info), id 0xc0000005]
+
+Stack: [0x1dd00000,0x1dd50000],  sp=0x1dd4efe0,  free space=315k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [WinSockHook.dll+0x13c7e]
+C  [net.dll+0x210f]
+j  java.net.DualStackPlainSocketImpl.connect0(ILjava/net/InetAddress;I)I+0
+j  java.net.DualStackPlainSocketImpl.socketConnect(Ljava/net/InetAddress;II)V+28
+j  java.net.AbstractPlainSocketImpl.doConnect(Ljava/net/InetAddress;II)V+64
+j  java.net.AbstractPlainSocketImpl.connectToAddress(Ljava/net/InetAddress;II)V+23
+j  java.net.AbstractPlainSocketImpl.connect(Ljava/net/SocketAddress;I)V+78
+j  java.net.PlainSocketImpl.connect(Ljava/net/SocketAddress;I)V+6
+j  java.net.SocksSocketImpl.connect(Ljava/net/SocketAddress;I)V+381
+j  java.net.Socket.connect(Ljava/net/SocketAddress;I)V+179
+j  java.net.Socket.connect(Ljava/net/SocketAddress;)V+3
+j  sun.net.NetworkClient.doConnect(Ljava/lang/String;I)Ljava/net/Socket;+140
+j  sun.net.www.http.HttpClient.openServer(Ljava/lang/String;I)V+4
+j  sun.net.www.http.HttpClient.openServer()V+114
+j  sun.net.www.http.HttpClient.<init>(Ljava/net/URL;Ljava/net/Proxy;I)V+125
+j  sun.net.www.http.HttpClient.New(Ljava/net/URL;Ljava/net/Proxy;IZLsun/net/www/protocol/http/HttpURLConnection;)Lsun/net/www/http/HttpClient;+259
+j  sun.net.www.http.HttpClient.New(Ljava/net/URL;Ljava/net/Proxy;ILsun/net/www/protocol/http/HttpURLConnection;)Lsun/net/www/http/HttpClient;+5
+j  sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(Ljava/net/URL;Ljava/net/Proxy;I)Lsun/net/www/http/HttpClient;+4
+j  sun.net.www.protocol.http.HttpURLConnection.plainConnect0()V+356
+j  sun.net.www.protocol.http.HttpURLConnection.plainConnect()V+71
+j  sun.net.www.protocol.http.HttpURLConnection.connect()V+20
+j  org.springframework.http.client.SimpleBufferingClientHttpRequest.executeInternal(Lorg/springframework/http/HttpHeaders;[B)Lorg/springframework/http/client/ClientHttpResponse;+61
+j  org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(Lorg/springframework/http/HttpHeaders;)Lorg/springframework/http/client/ClientHttpResponse;+27
+j  org.springframework.http.client.AbstractClientHttpRequest.execute()Lorg/springframework/http/client/ClientHttpResponse;+9
+j  org.springframework.web.client.RestTemplate.doExecute(Ljava/net/URI;Lorg/springframework/http/HttpMethod;Lorg/springframework/web/client/RequestCallback;Lorg/springframework/web/client/ResponseExtractor;)Ljava/lang/Object;+37
+j  org.springframework.cloud.sleuth.zipkin2.sender.ZipkinRestTemplateWrapper.doExecute(Ljava/net/URI;Lorg/springframework/http/HttpMethod;Lorg/springframework/web/client/RequestCallback;Lorg/springframework/web/client/ResponseExtractor;)Ljava/lang/Object;+31
+j  org.springframework.web.client.RestTemplate.exchange(Lorg/springframework/http/RequestEntity;Ljava/lang/Class;)Lorg/springframework/http/ResponseEntity;+26
+j  org.springframework.cloud.sleuth.zipkin2.sender.RestTemplateSender.post([B)V+43
+j  org.springframework.cloud.sleuth.zipkin2.sender.RestTemplateSender$HttpPostCall.doExecute()Ljava/lang/Void;+8
+j  org.springframework.cloud.sleuth.zipkin2.sender.RestTemplateSender$HttpPostCall.doExecute()Ljava/lang/Object;+1
+j  zipkin2.Call$Base.execute()Ljava/lang/Object;+54
+j  zipkin2.reporter.AsyncReporter$BoundedAsyncReporter.flush(Lzipkin2/reporter/BufferNextMessage;)V+138
+j  zipkin2.reporter.AsyncReporter$Builder$1.run()V+21
+v  ~StubRoutines::call_stub
+V  [jvm.dll+0x155cb5]
+V  [jvm.dll+0x21b12e]
+V  [jvm.dll+0x155d4e]
+V  [jvm.dll+0x155ed6]
+V  [jvm.dll+0x155f47]
+V  [jvm.dll+0xfb0cf]
+V
